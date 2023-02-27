@@ -79,7 +79,7 @@ const login = async (req, res) => {
       return res.status(200).json({ user, token });
     } //devolvemos un json con match en true y el token
   } catch (error) {
-    return res.status(500).json({
+    return res.status(400).json({
       message: "Internal server error",
       error: error.message,
     });
