@@ -25,7 +25,7 @@ userRouter.route("/list").get(isAutenticated, getAllUsers);
 userRouter.route("/list/:id").get(getIdValidations, getUserById);
 
 userRouter.route("/signup").post(signupUserValidations, signupUser);
-userRouter.route("/login").post(logInUserValidations, login);
+userRouter.route("/login").post(login);
 userRouter
   .route("/current")
   .post(isAutenticated, upload.single("image"), currentUser);
