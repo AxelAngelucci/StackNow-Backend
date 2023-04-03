@@ -22,7 +22,7 @@ const NewAnswer = async (req, res) => {
 
   const saveQuestion = await Question.findByIdAndUpdate(idQuestion, data, {
     new: true,
-  }).populate("user", "name");
+  });
   return res.json(saveQuestion);
 };
 

@@ -1,6 +1,7 @@
 import Question from "../models/Question.js";
 import { response, request } from "express";
 import Category from "../models/Category.js";
+import db from "../db/config.js";
 
 const NewQuestion = async (req, res) => {
   const category = req.body.category;
@@ -67,6 +68,13 @@ const questionByUser = async (req, res) => {
   return res.json(question);
 };
 
+const searchQuestions = async (req, res) => {
+  const { message } = req.query;
+  const query = { topic: { $regex: message, $options: "i" } };
+  const question = await Question.find(query);
+  return res.json(question);
+};
+
 export {
   NewQuestion,
   getAllQuestion,
@@ -74,4 +82,5 @@ export {
   getQuestionByCategory,
   deleteQuestion,
   questionByUser,
+  searchQuestions,
 };
